@@ -27,5 +27,14 @@ public class GamesRepo {
         }
     }
 
-    // Voeg andere methoden toe voor gamesinteractie, zoals het ophalen van games per gebruiker, enzovoort.
-}
+    public static ResultSet getTopGames() throws SQLException {
+        String query = "SELECT g.game_id, g.user_id, g.game_date, s.score " +
+                       "FROM Games g " +
+                       "JOIN Scores s ON g.game_id = s.game_id " +
+                       "ORDER BY s.score DESC " +
+                       "LIMIT 10";
+        Connection conn = getConnection();
+        PreparedStatement stmt = conn.prepareStatement(query);
+        return stmt.executeQuery();
+    }
+    }

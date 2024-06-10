@@ -10,7 +10,6 @@ public class ScoresService {
         try {
             Scores newScore = new Scores(0, gameId, userId, score);
             ScoresRepo.addScore(newScore);
-            System.out.println("Score toegevoegd!");
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Toevoegen van score mislukt. Probeer het opnieuw.");
